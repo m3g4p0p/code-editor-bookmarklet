@@ -31,7 +31,12 @@
       margin-right: auto;
     }
 
-    .instructions {
+    section {
+      display: none;
+    }
+
+    .show-sections section {
+      display: block;
       background-color: white;
       margin-top: .5em;
       padding: 20px;
@@ -45,6 +50,11 @@
   </style>
 </head>
 <body>
+  <section>
+    <h1>Iframe Editor</h1>
+    <p>Code editor for ad hoc loading into any web page via a bookmarklet.</p>
+  </section>
+
   <main>
     <div class="controls">
       <select disabled id="language">
@@ -59,10 +69,10 @@
     <div id="editor" style="width:800px; height:600px; border:1px solid grey"></div>
   </main>
 
-  <article hidden id="instructions" class="instructions">
-    <h2>Bookmarklet code:</h2>
+  <section>
+    <h2>Bookmarklet Code</h2>
     <code id="code"></code>
-  </article>
+  </section>
 
   <script src="./dist/main.js"></script>
 </body>

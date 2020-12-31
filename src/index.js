@@ -8,14 +8,13 @@ const text = params.get('text')
 const origin = params.get('origin')
 
 function showInstructions () {
-  const instructions = document.getElementById('instructions')
   const code = document.getElementById('code')
 
   fetch('./dist/bookmarklet.js')
     .then(res => res.text())
     .then(text => {
-      instructions.hidden = false
       code.textContent = `javascript:(function(){${encodeURIComponent(text)}})()`
+      document.body.classList.add('show-sections')
     })
     .catch(console.error)
 }
