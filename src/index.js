@@ -3,7 +3,9 @@ import { initMonaco } from './monaco'
 const language = document.getElementById('language')
 const insertBtn = document.getElementById('insert')
 const closeBtn = document.getElementById('close')
-const text = new URLSearchParams(window.location.search).get('text')
+const params = new URLSearchParams(window.location.search)
+const text = params.get('text')
+const origin = params.get('origin')
 
 function showBookmarklet () {
   fetch('./dist/bookmarklet.js')
@@ -16,8 +18,12 @@ function showBookmarklet () {
     .catch(console.error)
 }
 
+function postMessage (data) {
+  window.parent.postMessage(data, origin)
+}
+
 closeBtn.addEventListener('click', () => {
-  window.parent.postMessage({ type: 'editor.close' })
+  postMessage({ type: 'editor.close' })
 })
 
 initMonaco().then(monaco => {
@@ -34,7 +40,7 @@ initMonaco().then(monaco => {
   })
 
   insertBtn.addEventListener('click', () => {
-    window.parent.postMessage({
+    postMessage({
       type: 'editor.insert',
       value: editor.getValue(),
       syntax: language.value
