@@ -1,6 +1,6 @@
 function createIframe () {
   const { activeElement } = document
-  const { selectionStart, value } = activeElement || {}
+  const { selectionStart, selectionEnd, value } = activeElement || {}
   const text = window.getSelection().toString()
   const iframe = document.createElement('iframe')
   const params = new URLSearchParams()
@@ -16,7 +16,7 @@ function createIframe () {
       '```' + data.syntax + '\n' +
       data.value +
       '\n```\n' +
-      value.slice(selectionStart)
+      value.slice(selectionEnd)
     )
   }
 
