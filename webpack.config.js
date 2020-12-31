@@ -5,6 +5,7 @@ module.exports = env => ({
   context: path.resolve(__dirname, 'src'),
   entry: {
     main: './index.js',
+    loader: './loader.js',
     bookmarklet: './bookmarklet.js'
   },
   mode: env.production ? 'production' : 'development',
@@ -20,10 +21,10 @@ module.exports = env => ({
   },
   plugins: [
     new webpack.DefinePlugin({
-      IFRAME_URL: JSON.stringify(
+      BASE_URL: JSON.stringify(
         env.production
-          ? 'https://m3g4p0p.github.io/editor-iframe/index.html'
-          : 'index.html'
+          ? 'https://m3g4p0p.github.io/editor-iframe/'
+          : ''
       )
     })
   ]

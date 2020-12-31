@@ -10,7 +10,7 @@
     },
     "globals": [
       "monaco",
-      "IFRAME_URL"
+      "BASE_URL"
     ]
   },
   "devDependencies": {
