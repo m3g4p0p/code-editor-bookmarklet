@@ -39,7 +39,7 @@ function createIframe () {
 
   params.append('text', encodeURIComponent(text))
   params.append('origin', window.location.origin)
-  iframe.src = 'https://m3g4p0p.github.io/editor-iframe/index.html?' + params.toString()
+  iframe.src = IFRAME_URL + '?' + params.toString()
 
   Object.assign(iframe.style, {
     position: 'fixed',

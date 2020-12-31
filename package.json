@@ -1,11 +1,16 @@
 {
+  "scripts": {
+    "build:dev": "webpack --watch",
+    "build:prod": "webpack --env production"
+  },
   "standard": {
     "env": {
       "browser": true,
       "amd": true
     },
     "globals": [
-      "monaco"
+      "monaco",
+      "IFRAME_URL"
     ]
   },
   "devDependencies": {

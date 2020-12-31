@@ -7,13 +7,15 @@ const params = new URLSearchParams(window.location.search)
 const text = params.get('text')
 const origin = params.get('origin')
 
-function showBookmarklet () {
+function showInstructions () {
+  const instructions = document.getElementById('instructions')
+  const code = document.getElementById('code')
+
   fetch('./dist/bookmarklet.js')
     .then(res => res.text())
     .then(text => {
-      const code = document.createElement('code')
+      instructions.hidden = false
       code.textContent = `javascript:(function(){${encodeURIComponent(text)}})()`
-      document.body.appendChild(code)
     })
     .catch(console.error)
 }
@@ -51,5 +53,5 @@ initMonaco().then(monaco => {
 })
 
 if (window.parent === window) {
-  showBookmarklet()
+  showInstructions()
 }
