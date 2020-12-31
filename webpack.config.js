@@ -23,7 +23,7 @@ module.exports = env => ({
     new webpack.DefinePlugin({
       BASE_URL: JSON.stringify(
         env.production
-          ? 'https://m3g4p0p.github.io/editor-iframe/'
+          ? 'https://m3g4p0p.github.io/code-editor-bookmarklet/'
           : ''
       )
     })
