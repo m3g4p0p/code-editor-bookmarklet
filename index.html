@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+    }
+
+    main {
+      background-color: rgba(0, 0, 0, .8);
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .controls {
+      display: flex;
+      margin-bottom: .5em;
+    }
+
+    .controls select {
+      margin-right: auto;
+    }
+
+    code {
+      background-color: white;
+      margin-top: .5em;
+      padding: 20px;
+      border-radius: 5px;
+      width: 800px;
+      overflow-wrap: anywhere;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="controls">
+      <select disabled id="language">
+        <option selected value="javascript">JavaScript</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+      </select>
+      <button disabled id="insert">Insert</button>
+      <button id="close">Close</button>
+    </div>
+
+    <div id="editor" style="width:800px; height:600px; border:1px solid grey"></div>
+  </main>
+
+  <script src="./dist/main.js"></script>
+</body>
+</html>
