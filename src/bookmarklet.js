@@ -36,7 +36,7 @@ function createIframe () {
     }
   }
 
-  iframe.src = 'http://127.0.0.1:5500/index.html?text=' + encodeURIComponent(text)
+  iframe.src = 'https://m3g4p0p.github.io/editor-iframe/index.html?text=' + encodeURIComponent(text)
 
   Object.assign(iframe.style, {
     position: 'fixed',
