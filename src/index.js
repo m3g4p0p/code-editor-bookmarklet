@@ -29,6 +29,12 @@ closeButton.addEventListener('click', () => {
   postMessage({ type: 'editor.close' })
 })
 
+document.body.addEventListener('click', event => {
+  if (event.target === event.currentTarget) {
+    closeButton.click()
+  }
+})
+
 initMonaco().then(monaco => {
   const editor = monaco.editor.create(document.getElementById('editor'), {
     value: text,
