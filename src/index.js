@@ -10,7 +10,7 @@ function showBookmarklet () {
     .then(res => res.text())
     .then(text => {
       const code = document.createElement('code')
-      code.textContent = `javascript:${encodeURIComponent(text)}`
+      code.textContent = `javascript:(function(){${encodeURIComponent(text)}})()`
       document.body.appendChild(code)
     })
     .catch(console.error)

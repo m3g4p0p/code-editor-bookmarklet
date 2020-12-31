@@ -52,3 +52,4 @@ function createIframe () {
 }
 
 window.createIframe = createIframe
+createIframe()
