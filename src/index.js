@@ -4,8 +4,8 @@ const language = document.getElementById('language')
 const insertBtn = document.getElementById('insert')
 const closeBtn = document.getElementById('close')
 const params = new URLSearchParams(window.location.search)
-const text = decodeURIComponent(params.get('text'))
-const origin = params.get('origin')
+const text = decodeURIComponent(params.get('text') || '')
+const origin = params.get('origin') || '*'
 
 function showInstructions () {
   const code = document.getElementById('code')
