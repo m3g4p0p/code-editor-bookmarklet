@@ -20,6 +20,10 @@ function createIframe () {
     )
   }
 
+  function setTheme (data) {
+    localStorage.setItem('monaco-theme', data.theme)
+  }
+
   function handleMessage (event) {
     switch (event.data.type) {
       case 'editor.close':
@@ -34,11 +38,16 @@ function createIframe () {
         }
 
         break
+
+      case 'editor.theme':
+        setTheme(event.data)
+        break
     }
   }
 
   params.append('text', encodeURIComponent(text))
   params.append('origin', window.location.origin)
+  params.append('theme', localStorage.getItem('monaco-theme') || '')
   iframe.src = IFRAME_URL + '?' + params.toString()
 
   Object.assign(iframe.style, {

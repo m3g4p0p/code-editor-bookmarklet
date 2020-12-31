@@ -25,9 +25,25 @@
     .controls {
       display: flex;
       margin-bottom: .5em;
+      align-items: center;
     }
 
-    .controls select {
+    .controls select,
+    .controls button {
+      padding: 3px;
+    }
+
+    .controls > :not(:first-child) {
+      margin-left: 10px;
+    }
+
+    .controls label {
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: .8em;
+    }
+
+    .controls select:last-of-type {
       margin-right: auto;
     }
 
@@ -58,13 +74,22 @@
 
   <main>
     <div class="controls">
+      <label for="language">Language:</label>
       <select disabled id="language">
         <option selected value="javascript">JavaScript</option>
+        <option value="typescript">TypeScript</option>
         <option value="html">HTML</option>
         <option value="css">CSS</option>
         <option value="php">PHP</option>
         <option value="python">Python</option>
       </select>
+
+      <label for="theme">Theme:</label>
+      <select disabled id="theme">
+        <option selected value="vs">Light</option>
+        <option value="vs-dark">Dark</option>
+      </select>
+
       <button disabled id="insert">Insert</button>
       <button id="close">Close</button>
     </div>

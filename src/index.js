@@ -1,11 +1,13 @@
 import { initMonaco } from './monaco'
 
-const language = document.getElementById('language')
-const insertBtn = document.getElementById('insert')
-const closeBtn = document.getElementById('close')
+const languageSelect = document.getElementById('language')
+const themeSelect = document.getElementById('theme')
+const insertButton = document.getElementById('insert')
+const closeButton = document.getElementById('close')
 const params = new URLSearchParams(window.location.search)
 const text = decodeURIComponent(params.get('text') || '')
 const origin = params.get('origin') || '*'
+const theme = params.get('theme')
 
 function showInstructions () {
   const code = document.getElementById('code')
@@ -23,28 +25,43 @@ function postMessage (data) {
   window.parent.postMessage(data, origin)
 }
 
-closeBtn.addEventListener('click', () => {
+closeButton.addEventListener('click', () => {
   postMessage({ type: 'editor.close' })
 })
 
 initMonaco().then(monaco => {
   const editor = monaco.editor.create(document.getElementById('editor'), {
     value: text,
-    language: language.value
+    language: languageSelect.value,
+    ...theme ? { theme } : null
   })
 
-  language.disabled = false
-  insertBtn.disabled = false
+  languageSelect.disabled = false
+  themeSelect.disabled = false
+  themeSelect.value = theme || themeSelect.value
+  insertButton.disabled = false
 
-  language.addEventListener('change', () => {
-    monaco.editor.setModelLanguage(editor.getModel(), language.value)
+  languageSelect.addEventListener('change', () => {
+    monaco.editor.setModelLanguage(
+      editor.getModel(),
+      languageSelect.value
+    )
   })
 
-  insertBtn.addEventListener('click', () => {
+  themeSelect.addEventListener('change', () => {
+    monaco.editor.setTheme(themeSelect.value)
+
+    postMessage({
+      type: 'editor.theme',
+      theme: themeSelect.value
+    })
+  })
+
+  insertButton.addEventListener('click', () => {
     postMessage({
       type: 'editor.insert',
       value: editor.getValue(),
-      syntax: language.value
+      syntax: languageSelect.value
     })
   })
 
