@@ -56,7 +56,8 @@ window._createEditorIframe = function createEditorIframe () {
     height: '100vh',
     top: '0',
     left: '0',
-    zIndex: '1000'
+    zIndex: '1000',
+    border: '0'
   })
 
   document.body.appendChild(iframe)
